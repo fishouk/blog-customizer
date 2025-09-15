@@ -1,1 +1,4 @@
-export { ArticleParamsForm } from './ArticleParamsForm';
+export {
+	ArticleParamsForm,
+	type ArticleParamsFormProps,
+} from './ArticleParamsForm';
