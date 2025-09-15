@@ -29,15 +29,15 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	articleState,
 	setArticleState,
 }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [formState, setFormState] = useState<ArticleStateType>(articleState);
 	const sidebarRef = useRef<HTMLDivElement>(null);
 
 	useOutsideClickClose({
-		isOpen,
+		isOpen: isMenuOpen,
 		rootRef: sidebarRef,
-		onClose: () => setIsOpen(false),
-		onChange: setIsOpen,
+		onClose: () => setIsMenuOpen(false),
+		onChange: setIsMenuOpen,
 	});
 
 	const handleSubmit = (e: FormEvent) => {
@@ -51,16 +51,16 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	};
 
 	const toggleSidebar = () => {
-		setIsOpen(!isOpen);
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	return (
 		<>
-			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
+			<ArrowButton isOpen={isMenuOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
 				className={clsx(styles.container, {
-					[styles.container_open]: isOpen,
+					[styles.container_open]: isMenuOpen,
 				})}>
 				<form className={styles.form} onSubmit={handleSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>
